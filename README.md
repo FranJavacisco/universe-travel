@@ -65,9 +65,9 @@ El proyecto está construido pensando en la personalización. Puedes modificar f
 
 ## 🔧 Dependencias
 
-- react: ^18.2.0
+- react: 18.2.0
 - lucide-react: Última versión
-- tailwindcss: ^3.0.0
+- tailwindcss: 3.0.0
 - Dependencias adicionales se pueden encontrar en package.json
 
 ## 📱 Diseño Responsivo
