@@ -1,7 +1,12 @@
-/* index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Configuración base */
+html, body {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
 
 /* Animación de flotación para el astronauta */
 @keyframes float {
@@ -18,4 +23,18 @@
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
+}
+
+/* Ajustes responsive para la animación */
+@media (max-width: 768px) {
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .backdrop-blur-sm {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
 }
