@@ -91,7 +91,7 @@ const SpaceLanding = () => {
         }}
       >
         <img 
-          src="public/images/Superman.png" 
+          src="universe-travel/images/Superman.png" 
           alt="Superman"
           className="w-32 h-auto opacity-80"
           style={{
@@ -171,7 +171,7 @@ const SpaceLanding = () => {
               }}
             >
               <img 
-                src="public/images/Floating_astronaut.png" 
+                src="universe-travel/images/Floating_astronaut.png" 
                 alt="Floating astronaut"
                 className="max-w-[600px] animate-float"
               />
