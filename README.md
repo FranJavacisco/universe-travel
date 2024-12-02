@@ -40,12 +40,12 @@ Una landing page dinámica y moderna para una empresa de viajes espaciales, cons
 
 1. Clona el repositorio:
 ```bash
-git clone https://github.com/tuusuario/universe-travel-landing.git
+git clone https://github.com/tuusuario/universe-travel.git
 ```
 
 2. Instala las dependencias:
 ```bash
-cd universe-travel-landing
+cd universe-travel
 npm install
 ```
 
@@ -96,7 +96,7 @@ Este proyecto está licenciado bajo la Licencia MIT - ver el archivo LICENSE par
 
 - Inspiración de diseño de sitios web modernos de exploración espacial
 - Iconos proporcionados por Lucide Icons
-- Imágenes obtenidas de [Pinterest]
+- Imágenes obtenidas de Pinterest
 
 ## 🌐 Demo en Vivo
 
@@ -104,4 +104,4 @@ Este proyecto está licenciado bajo la Licencia MIT - ver el archivo LICENSE par
 
 ---
 
-Hecho con ❤️ por [Francisco Lopez] 
+Hecho con ❤️ por Francisco Lopez
