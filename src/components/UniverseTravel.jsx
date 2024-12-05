@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Menu, ChevronLeft, ChevronRight, X, Rocket, Clock, DollarSign } from 'lucide-react';
+import { Menu, ChevronLeft, ChevronRight, X, Rocket, Clock } from 'lucide-react';
 
-// Datos de destinos
 const destinations = [
   {
     id: 1,
@@ -32,7 +31,6 @@ const destinations = [
   }
 ];
 
-// Componente de tarjeta de destino
 const DestinationCard = ({ destination }) => (
   <div 
     className="bg-[#0A0E17]/80 backdrop-blur-sm border border-gray-800 rounded-lg p-4 md:p-6 transform hover:scale-105 transition-all duration-300 group"
@@ -80,7 +78,6 @@ const SpaceLanding = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   
   useEffect(() => {
-    // Animación del astronauta
     const floatAnimation = () => {
       const time = Date.now() / 2000;
       setPosition({
@@ -89,7 +86,6 @@ const SpaceLanding = () => {
       });
     };
 
-    // Animación del cometa con velocidad aumentada
     const cometAnimation = () => {
       setCometPosition(prev => {
         if (prev > window.innerWidth + 200) {
@@ -99,7 +95,6 @@ const SpaceLanding = () => {
       });
     };
 
-    // Manejador de scroll
     const handleScroll = () => {
       const scrolled = window.scrollY;
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
@@ -112,7 +107,6 @@ const SpaceLanding = () => {
 
     window.addEventListener('scroll', handleScroll);
 
-    // Observador de secciones para el menú activo
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
@@ -152,9 +146,7 @@ const SpaceLanding = () => {
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-[#0A0E17]">
       {/* Progress bar */}
-      <div 
-        className="fixed top-0 left-0 w-full h-1 bg-gray-800 z-50"
-      >
+      <div className="fixed top-0 left-0 w-full h-1 bg-gray-800 z-50">
         <div 
           className="h-full bg-blue-500 transition-all duration-300"
           style={{ width: `${scrollProgress}%` }}
@@ -168,15 +160,21 @@ const SpaceLanding = () => {
         </div>
       )}
 
-      {/* Background Earth Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center opacity-80"
-        style={{
-          backgroundImage: `url('${window.location.pathname}images/backgroundImage.webp')`,
-          filter: 'brightness(0.7)'
-        }}
-        onLoad={() => setIsLoading(false)}
-      />
+      {/* Background Video */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute w-full h-full object-cover opacity-80"
+          onLoadedData={() => setIsLoading(false)}
+          style={{ filter: 'brightness(0.7)' }}
+        >
+          <source src="/universe-travel/videos/Tierra.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-[#0A0E17] opacity-70" />
@@ -191,7 +189,7 @@ const SpaceLanding = () => {
         }}
       >
         <img 
-          src={`${window.location.pathname}images/Superman.png`}
+          src="/universe-travel/images/Superman.png"
           alt="Superman"
           loading="lazy"
           className="w-24 md:w-32 h-auto opacity-80"
@@ -272,7 +270,7 @@ const SpaceLanding = () => {
               }}
             >
               <img 
-                src={`${window.location.pathname}images/Floating_astronaut.png`}
+                src="/universe-travel/images/Floating_astronaut.png"
                 alt="Floating astronaut"
                 className="w-full h-auto animate-float"
                 onLoad={() => setIsLoading(false)}
