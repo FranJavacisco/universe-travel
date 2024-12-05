@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Menu, ChevronLeft, ChevronRight, X, Rocket, Clock, DollarSign } from 'lucide-react';
+import { Menu, ChevronLeft, ChevronRight, X, Rocket, Clock } from 'lucide-react';
 
-// Datos de destinos
 const destinations = [
   {
     id: 1,
@@ -32,7 +31,6 @@ const destinations = [
   }
 ];
 
-// Componente de tarjeta de destino
 const DestinationCard = ({ destination }) => (
   <div 
     className="bg-[#0A0E17]/80 backdrop-blur-sm border border-gray-800 rounded-lg p-4 md:p-6 transform hover:scale-105 transition-all duration-300 group"
@@ -80,7 +78,6 @@ const SpaceLanding = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   
   useEffect(() => {
-    // Animación del astronauta
     const floatAnimation = () => {
       const time = Date.now() / 2000;
       setPosition({
@@ -89,7 +86,6 @@ const SpaceLanding = () => {
       });
     };
 
-    // Animación del cometa con velocidad aumentada
     const cometAnimation = () => {
       setCometPosition(prev => {
         if (prev > window.innerWidth + 200) {
@@ -99,7 +95,6 @@ const SpaceLanding = () => {
       });
     };
 
-    // Manejador de scroll
     const handleScroll = () => {
       const scrolled = window.scrollY;
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
@@ -112,7 +107,6 @@ const SpaceLanding = () => {
 
     window.addEventListener('scroll', handleScroll);
 
-    // Observador de secciones para el menú activo
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
@@ -151,37 +145,36 @@ const SpaceLanding = () => {
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-[#0A0E17]">
-      {/* Progress bar */}
-      <div 
-        className="fixed top-0 left-0 w-full h-1 bg-gray-800 z-50"
-      >
+      <div className="fixed top-0 left-0 w-full h-1 bg-gray-800 z-50">
         <div 
           className="h-full bg-blue-500 transition-all duration-300"
           style={{ width: `${scrollProgress}%` }}
         />
       </div>
 
-      {/* Loader */}
       {isLoading && (
         <div className="fixed inset-0 bg-[#0A0E17] z-50 flex items-center justify-center">
           <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
         </div>
       )}
 
-      {/* Background Earth Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center opacity-80"
-        style={{
-          backgroundImage: `url('${window.location.pathname}images/backgroundImage.webp')`,
-          filter: 'brightness(0.7)'
-        }}
-        onLoad={() => setIsLoading(false)}
-      />
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute w-full h-full object-cover opacity-80"
+          onLoadedData={() => setIsLoading(false)}
+          style={{ filter: 'brightness(0.7)' }}
+        >
+          <source src={`${window.location.pathname}videos/Tierra.mp4`} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
-      {/* Dark Overlay */}
       <div className="absolute inset-0 bg-[#0A0E17] opacity-70" />
 
-      {/* Cometa Imagen */}
       <div 
         className="absolute z-[5] transition-transform duration-300"
         style={{
@@ -201,7 +194,6 @@ const SpaceLanding = () => {
         />
       </div>
 
-      {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50">
           <div className="fixed right-0 top-0 h-full w-64 bg-[#0A0E17] p-6 transform transition-transform duration-300">
@@ -228,13 +220,10 @@ const SpaceLanding = () => {
         </div>
       )}
 
-      {/* Content Container */}
       <div className="relative z-10 h-full pb-32 md:pb-40">
-        {/* Navigation */}
         <nav className="flex justify-between items-center px-4 md:px-8 py-4 md:py-6">
           <div className="text-white text-xl md:text-2xl font-bold">UT</div>
           
-          {/* Desktop Menu */}
           <div className="hidden md:flex space-x-12">
             {menuItems.map((item) => (
               <button
@@ -252,7 +241,6 @@ const SpaceLanding = () => {
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
           <button 
             onClick={() => setIsMenuOpen(true)}
             className="text-white md:hidden hover:text-gray-300 transition-colors duration-300"
@@ -261,9 +249,7 @@ const SpaceLanding = () => {
           </button>
         </nav>
 
-        {/* Main Content */}
         <main className="flex flex-col md:flex-row min-h-[calc(100vh-320px)] px-4 md:px-8">
-          {/* Left Content */}
           <div className="flex-1 flex flex-col justify-center items-center md:items-start z-20 mt-8 md:mt-0">
             <div 
               className="relative w-full max-w-[300px] md:max-w-[600px]"
@@ -280,7 +266,6 @@ const SpaceLanding = () => {
             </div>
           </div>
 
-          {/* Right Content */}
           <div className="flex-1 flex flex-col justify-center text-center md:text-left mt-8 md:mt-0">
             <h1 className="text-white text-4xl md:text-7xl font-bold mb-6">
               Universe
@@ -295,7 +280,6 @@ const SpaceLanding = () => {
           </div>
         </main>
 
-        {/* Destinations Grid */}
         <div className="px-4 md:px-8 mt-8 md:mt-16 z-20 relative">
           <h2 className="text-2xl md:text-4xl font-bold text-white text-center mb-8">
             Popular Destinations
@@ -307,7 +291,6 @@ const SpaceLanding = () => {
           </div>
         </div>
 
-        {/* Footer Content */}
         <div className="fixed bottom-4 md:bottom-8 left-4 md:left-8 z-30">
           <div className="text-gray-500 text-sm md:text-base">
             <div className="mb-2 md:mb-4">
@@ -322,7 +305,6 @@ const SpaceLanding = () => {
           </div>
         </div>
 
-        {/* Navigation Arrows */}
         <div className="fixed bottom-4 md:bottom-8 right-4 md:right-8 z-30 flex space-x-4">
           <button className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-gray-600 flex items-center justify-center text-white hover:bg-gray-800 transition-colors duration-300">
             <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
